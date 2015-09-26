@@ -1,0 +1,72 @@
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-8">
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="row">
+          
+            <%= form_for(@book, :html => {:class => "form-horizontal center"} ) do |f| %>
+              
+              <% if @book.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+                  <ul>
+                  <% @book.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            
+              <div class="field">
+                <div class="row">
+                  <%= f.label :isbn, class: "control-label" %><br>
+                  <%= f.text_field :isbn, class: "form-control" %>
+                </div>
+              </div>
+              
+              <div class="field">
+              <div class="row">
+                  <%= f.label :title, class: "control-label" %><br>
+                  <%= f.text_field :title, class:"form-control" %>
+                </div>
+              </div>
+              
+              <div class="field">
+                <div class="row">
+                  <%= f.label :author, class: "control-label" %><br>
+                  <%= f.text_field :author, class:"form-control" %>
+                </div>
+              </div>
+              <div class="field">
+                <div class="row">
+                  <%= f.label :description, class: "control-label" %><br>
+                  <%= f.text_field :description, class:"form-control" %>
+                </div>
+              </div>
+              
+              <div class="field">
+                <div class="row">
+                  <%= f.label :status, class: "control-label" %><br>
+                  <%= f.text_field :status, class:"form-control" %>
+                </div>
+              </div>
+              
+              <hr style="border:3 double #987cb9" width="80%" color=#987cb9 SIZE=3>
+              <div class="actions">
+
+                <%= link_to new_book_path, class: 'btn btn-success', id: "span_create" do %>
+                  <i class="glyphicon glyphicon-plus"></i> Create
+                <% end %>
+
+              </div>
+              
+            <% end %><!-- end of form -->
+        
+          </div><!-- div for row -->
+        </div><!-- div for col-xs-8 -->
+      </div>
+  </div>
+</div>

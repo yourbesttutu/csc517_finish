@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Histories</h1>
+
+<table class="table table-striped"> 
+  <thead>
+    <tr>
+      <th>Userid</th>
+      <th>User Email</th>
+      <th>Bookid</th>
+      <th>Book Title</th>
+      <th>Checkouttime</th>
+      <th>Returntime</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if !@histories %>
+      <p>No history</p>
+    <% else %>
+    <% @histories.each do |history| %>
+            <% @book = Book.find(history.bookid) %>
+            <% @user = User.find(history.userid) %>
+      <tr>
+        <td><%= link_to history.userid, history_path(@user) %></td>
+        <td><%= link_to @user.email, history_path(@user)  %></td>
+        <td><%= link_to history.bookid, controller: "books", action: "show", :id => history.bookid  %></td>
+        <td><%= link_to @book.title, controller: "books", action: "show", :id => history.bookid  %></td>
+        <td><%= history.checkouttime %></td>
+        <td><%= history.returntime %></td>
+        <td><%= link_to 'Show', history, class: "btn btn-xs btn-default" %></td>
+        <td><%= link_to 'Edit', edit_history_path(history), class: "btn btn-xs btn-default" %></td>
+        <td><%= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-default" %></td>
+        <td><% if history.returntime == '-1' %>
+            <p class="Return the Book"><%= link_to "Return the Book", controller: "books", action: "return", :id => history.bookid, :hid => history.id, class: "btn btn-xs btn-default" %>
+        <% end %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

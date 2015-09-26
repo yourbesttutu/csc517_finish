@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NCSU Library System</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'signin', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#span_create').click(function(){ $('#new_book').submit(console.log("inner")  ) });
+      $('#span_create_user').click(function(){ $('#new_user').submit(console.log("inner")   ) });
+    });
+  </script>
+</head>
+<body>
+
+  <% if logged_in? %>
+    <div class="page-header">
+      <%= render 'shared/navigation' %>
+    </div>
+  <% else %>
+    <!-- Add login background img -->
+    <div id="container">
+      <%= image_tag("NCLib.jpg", id: "container-bg") %>
+    </div>
+  <% end %>
+   
+  <div id="main-container" class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+        <% end -%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-9">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

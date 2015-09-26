@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <%if admin? %>
+    <h2>Welcome to NCSU Library System!  <%= current_user.name %></h2>
+    <br>
+    <h4> <span class="glyphicon glyphicon-star" aria-hidden="true"></span>TODAY'S HOURS:D. H. Hill: closes at 10:00pm </h4>
+    <h4> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>James B. Hunt Jr.: closes at 10:00pm </h4>
+    <br>
+   
+    <h4>You are a library Administrator! </h4>
+    <h4>Now you add books, checkout or return books for other members ...... </h4>
+  <%end%>
+  
+  <%if member? %>
+    <h2>Welcome to NCSU Library System!  <%= current_user.name %></h2>
+    <br>
+    <h4> <span class="glyphicon glyphicon-star" aria-hidden="true"></span>  TODAY'S HOURS:D. H. Hill: closes at 10:00pm </h4>
+    <h4> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>  James B. Hunt Jr.: closes at 10:00pm </h4>
+    <br>
+
+    <h4>You are a library member! </h4>
+    <h4>Now you can borrow Digital Media Production, Reserve a Room, Scan, Copy, Print ...... </h4>
+
+  <%end%>
+</div>
+
+
